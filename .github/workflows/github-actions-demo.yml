@@ -7,7 +7,7 @@ jobs:
     - name: Installation depends
       run: |
         sudo apt-get update
-        sudo apt install gcc-arm-linux-gnueabihf
+        sudo apt install gcc-arm-linux-gnueabihf u-boot-tools
     - name: Clone source code
       run: |
         git clone https://github.com/a641764137/aml8726-m1-raspbian.git
