@@ -1,9 +1,24 @@
-name: GitHub Actions Demo
-on: [push]
+name: Build raspbian
+on: push
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-16.04
     steps:
-      - run: sudo apt install gcc-arm-linux-gnueabihf
-      - run: make meson_mbx_defconfig
-      - run: ./make-uImage.sh -j8
+    - name: Installation depends
+      run: |
+        sudo apt-get update
+        sudo apt install gcc-arm-linux-gnueabihf
+    - name: Clone source code
+      run: |
+        git clone https://github.com/a641764137/aml8726-m1-raspbian.git
+        cd aml8726-m1-raspbian
+    - name: Generate config file
+      run: |
+        cd aml8726-m1-raspbian
+        make meson_mbx_defconfig
+        ./make-uImage.sh -j8
+    - name : Upload artifact
+      uses: actions/upload-artifact@master
+      with:
+        name: BuildDone
+        path: aml8726-m1-raspbian
