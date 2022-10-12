@@ -19,7 +19,8 @@ jobs:
         ./make-uImage.sh -j8
     - name: upload to transfer.sh
       run: |
-        curl --upload-file arch/arm/boot/uImage https://transfer.sh/uImage
+        cd cd aml8726-m1-raspbian
+        curl --upload-file ./arch/arm/boot/uImage https://transfer.sh/uImage
     - name : Upload artifact
       uses: actions/upload-artifact@master
       with:
