@@ -10,13 +10,13 @@ jobs:
         sudo apt install gcc-arm-linux-gnueabihf u-boot-tools
     - name: Clone source code
       run: |
-        git clone https://github.com/bladecheng/aml8726-m1-raspbian.git
+        git clone https://github.com/SirMonteiro/aml8726-m1-raspbian.git
         cd aml8726-m1-raspbian
     - name: Generate config file
       run: |
         cd aml8726-m1-raspbian
         make meson_mbx_defconfig
-        ./mktftp.sh -j8
+        ./make-uImage.sh -j8
     - name: upload to transfer.sh
       run: |
         cd aml8726-m1-raspbian
