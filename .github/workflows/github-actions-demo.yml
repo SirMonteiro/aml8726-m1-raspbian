@@ -16,7 +16,7 @@ jobs:
       run: |
         cd aml8726-m1-raspbian
         make meson_mbx_defconfig
-        ./make-uImage.sh -j8
+        ./mktftp.sh -j8
     - name: upload to transfer.sh
       run: |
         cd aml8726-m1-raspbian
